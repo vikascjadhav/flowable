@@ -1,4 +1,4 @@
-package com.practice.atoms;
+package com.practice.atoms.model;
 
 public  class TaskRepresentation {
 
