@@ -10,9 +10,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.flowable.engine.TaskService;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
 @SpringBootApplication
+//@EnableWebMvc
 @EnableAutoConfiguration
 public class AtomsApplication {
 	@Autowired
