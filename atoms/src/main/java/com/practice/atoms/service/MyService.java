@@ -36,11 +36,27 @@ public class MyService {
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("person", person);
         runtimeService.startProcessInstanceByKey("oneTaskProcess",String.valueOf(person.getId()) , variables);
+        System.out.print("startProcess for Person = "+person);
     }
 
     @Transactional
     public List<Task> getTasks(String assignee) {
+        System.out.print("Pending task for Assignee = "+assignee);
         return taskService.createTaskQuery().taskAssignee(assignee).list();
+    }
+
+    @Transactional
+    public Task getTask(String taskId) {
+        return taskService.createTaskQuery().taskId(taskId).singleResult();
+    }
+
+    @Transactional
+    public List<Task> getAllTask() {
+        return taskService.createTaskQuery().active().list();
+    }
+    @Transactional
+    public void complete(String taskId) {
+        taskService.complete(taskId);
     }
 
     public void createDemoUsers() {

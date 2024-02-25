@@ -41,6 +41,22 @@ public class MyRestController {
         return dtos;
     }
 
+    @RequestMapping(value="/tasksAll", method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+    public List<TaskRepresentation> getAllTask() {
+        List<Task> tasks = myService.getAllTask();
+        List<TaskRepresentation> dtos = new ArrayList<TaskRepresentation>();
+        for (Task task : tasks) {
+            dtos.add(new TaskRepresentation(task.getId(), task.getName()));
+        }
+        return dtos;
+    }
+
+    @PostMapping(value="/complete")
+    public  void completeTask(@RequestBody TaskRepresentation taskRepresentation) {
+        System.out.print("Task ID = "+taskRepresentation.getId());
+        myService.complete(taskRepresentation.getId());
+    }
+
 
     static class StartProcessRepresentation {
 

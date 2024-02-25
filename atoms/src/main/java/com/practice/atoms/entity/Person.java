@@ -8,6 +8,17 @@ import java.util.Date;
 
 @Entity
 public class Person {
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Person{");
+        sb.append("id=").append(id);
+        sb.append(", username='").append(username).append('\'');
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", birthDate=").append(birthDate);
+        sb.append('}');
+        return sb.toString();
+    }
 
     @Id
     private Long id;
